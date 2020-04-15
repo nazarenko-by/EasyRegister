@@ -4,12 +4,10 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.util.Base64;
 import android.view.View;
@@ -20,7 +18,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.ByteArrayOutputStream;
-import java.io.FileDescriptor;
 import java.io.IOException;
 
 
@@ -72,7 +69,9 @@ public class PerInfEdit extends AppCompatActivity {
     }
 
     private void updateUserInfo(){
-        if(appUser.getUserId() != null && !appUser.getUserId().equals("")){} else {
+        if(appUser.getUserId() != null && !appUser.getUserId().equals("")){
+
+        } else {
             userId = userIdText.getText().toString();
         }
         String firstName = firstNameText.getText().toString();
