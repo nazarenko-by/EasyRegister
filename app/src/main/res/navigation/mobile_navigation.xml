@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_per_inf">
+
+    <fragment
+        android:id="@+id/nav_per_inf"
+        android:name="com.nazarenko_by.easyregister.ui.perInf.PerInfFragment"
+        android:label="@string/menu_per_inf"
+        tools:layout="@layout/fragment_per_inf" />
+
+    <fragment
+        android:id="@+id/nav_qr"
+        android:name="com.nazarenko_by.easyregister.ui.QR.QRFragment"
+        android:label="@string/menu_qr"
+        tools:layout="@layout/fragment_qr" />
+
+    <fragment
+        android:id="@+id/nav_log"
+        android:name="com.nazarenko_by.easyregister.ui.log.LogFragment"
+        android:label="@string/menu_log"
+        tools:layout="@layout/fragment_log" />
+
+    <activity
+        android:id="@+id/nav_add_user"
+        android:name="com.nazarenko_by.easyregister.CameraScanActivity"
+        android:label="@string/menu_add_user"
+        tools:layout="@layout/activity_camera_scan" />
+
+</navigation>

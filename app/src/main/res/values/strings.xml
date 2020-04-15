@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Easy Register</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Navigation menu -->
+    <string name="menu_per_inf">Personal Information</string>
+    <string name="menu_qr">QR code</string>
+    <string name="menu_log">Log</string>
+    <string name="menu_add_user">Add to register</string>
+
+    <!-- Personal information -->
+    <string name="user_id">ID</string>
+    <string name="first_name_inf">First Name</string>
+    <string name="second_name_inf">Second Name</string>
+    <string name="patronymic_inf">Patronymic</string>
+    <string name="birthday_inf">Birthday Data</string>
+    <string name="group_inf">Group</string>
+    <string name="type_inf">Type user</string>
+    <string name="telephone_inf">Tel. Number</string>
+    <string name="mail_inf">Mail</string>
+    <string name="per_inf_button">Edit</string>
+    <string name="per_inf_save_button">Save</string>
+
+    <!-- Camera -->
+    <string name="camera_view_text">Scanning..</string>
+    <string name="camera_button_text">New Scan</string>
+    <string name="camera_cancel_button_text">Cancel</string>
+    <string name="camera_error">When you call the camera, it closes</string>
+
+    <!-- Dialog window -->
+    <string name="delete">Delete</string>
+    <string name="delete_all">Delete All</string>
+    <string name="cancel">Cancel</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="from_gallery">From Gallery</string>
+    <string name="delete_message">Do you want to delete selected?</string>
+    <string name="photo_message">Choose your profile picture</string>
+
+
+
+</resources>

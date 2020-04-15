@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"    >
+
+<LinearLayout
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="@dimen/frame">
+    <ImageView
+        android:id="@+id/per_inf_img"
+        android:layout_width="@dimen/per_inf_image"
+        android:layout_height="@dimen/per_inf_image"
+        android:padding="1dp"
+        android:scaleType="fitXY"
+        android:foreground="@drawable/image_frame" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+    <TextView
+        android:id="@+id/second_name_inf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/second_name_inf"
+        android:textSize="@dimen/per_inf_text"
+        android:padding="@dimen/frame"
+        android:layout_weight="1"
+        android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/first_name_inf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/first_name_inf"
+        android:textSize="@dimen/per_inf_text"
+        android:padding="@dimen/frame"
+        android:layout_weight="1"
+        android:textAlignment="center" />
+    </LinearLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:background="@drawable/text_frame"
+        android:layout_height="1.5dp" />
+    <TextView
+        android:id="@+id/patronymic_inf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/patronymic_inf"
+        android:textSize="@dimen/per_inf_text"
+        android:padding="@dimen/frame"/>
+    <View
+        android:layout_width="wrap_content"
+        android:background="@drawable/text_frame"
+        android:layout_height="1.5dp" />
+    <TextView
+        android:id="@+id/birthday_inf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/birthday_inf"
+        android:textSize="@dimen/per_inf_text"
+        android:padding="@dimen/frame"/>
+    <View
+        android:layout_width="wrap_content"
+        android:background="@drawable/text_frame"
+        android:layout_height="1.5dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/type_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/type_inf"
+            android:textSize="@dimen/per_inf_text"
+            android:padding="@dimen/frame"
+            android:textAlignment="center"/>
+    <TextView
+        android:id="@+id/group_inf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="@string/group_inf"
+        android:textSize="@dimen/per_inf_text"
+        android:padding="@dimen/frame"
+        android:textAlignment="center"/>
+    </LinearLayout>
+    <View
+        android:layout_width="wrap_content"
+        android:background="@drawable/text_frame"
+        android:layout_height="1.5dp" />
+    <TextView
+        android:id="@+id/telephone_inf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/telephone_inf"
+        android:textSize="@dimen/per_inf_text"
+        android:padding="@dimen/frame"/>
+    <View
+        android:layout_width="wrap_content"
+        android:background="@drawable/text_frame"
+        android:layout_height="1.5dp" />
+    <TextView
+        android:id="@+id/mail_inf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mail_inf"
+        android:textSize="@dimen/per_inf_text"
+        android:padding="@dimen/frame"/>
+    <Button
+        android:id="@+id/ind_edit_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/per_inf_button"
+        android:textColor="@color/buttonTextColor"
+        android:background="@drawable/button_form"/>
+</LinearLayout>
+
+</ScrollView>
