@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.TextView;
 
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import net.sourceforge.zbar.Config;
@@ -34,9 +33,9 @@ public class CameraScanActivity extends Activity {
     private boolean barcodeScanned = false;
     private boolean previewing = true;
 
-    static {
-        System.loadLibrary("iconv");
-    }
+    //static {
+      //  System.loadLibrary("iconv");
+   // }
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,7 +44,7 @@ public class CameraScanActivity extends Activity {
             finish();
         }
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
         autoFocusHandler = new Handler();
         mCamera = getCameraInstance();
