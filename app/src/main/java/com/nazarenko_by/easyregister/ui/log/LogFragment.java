@@ -3,6 +3,7 @@ package com.nazarenko_by.easyregister.ui.log;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -71,7 +72,10 @@ public class LogFragment extends Fragment {
 
     private void setInitialData() {
         db = databaseHelper.getReadableDatabase();
-        userCursor = db.rawQuery("SELECT * FROM " + DatabaseHelper.TABLE + " ORDER BY "
+        SharedPreferences preferences = this.getActivity().getSharedPreferences("TABLE",Context.MODE_PRIVATE);
+        String tableName = preferences.getString("OPEN", DatabaseHelper.TABLE);
+
+        userCursor = db.rawQuery("SELECT * FROM " + tableName + " ORDER BY "
                 + DatabaseHelper.COLUMN_GP + " ASC;", null);
         if (userCursor.moveToFirst()) {
             for (int i = 0; i < userCursor.getCount(); i++) {

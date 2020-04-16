@@ -2,6 +2,7 @@ package com.nazarenko_by.easyregister;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 
 public class AddUseToList {
@@ -87,6 +88,8 @@ public class AddUseToList {
             databaseHelper = new DatabaseHelper(context.getApplicationContext());
             db = databaseHelper.getReadableDatabase();
             ContentValues cv = new ContentValues();
+            SharedPreferences preferences = context.getApplicationContext().getSharedPreferences("TABLE",Context.MODE_PRIVATE);
+            String tableName = preferences.getString("OPEN", DatabaseHelper.TABLE);
 
             setUserId(QRSting.substring(QRSting.indexOf("ID")+2, QRSting.indexOf("|FN")));
             setFirstName(QRSting.substring(QRSting.indexOf("FN")+2, QRSting.indexOf("|SN")));
@@ -106,7 +109,7 @@ public class AddUseToList {
             cv.put(DatabaseHelper.COLUMN_ML, getMail());
             cv.put(DatabaseHelper.COLUMN_TN, getTelNumber());
             cv.put(DatabaseHelper.COLUMN_TY, getType());
-            db.insert(DatabaseHelper.TABLE, null, cv);
+            db.insert(tableName, null, cv);
             db.close();
                     }
     }

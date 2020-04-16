@@ -3,6 +3,7 @@ package com.nazarenko_by.easyregister;
 import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -144,6 +145,10 @@ public class MainActivity extends AppCompatActivity{
                 + DatabaseHelper.COLUMN_TN + " TEXT, "
                 + DatabaseHelper.COLUMN_ML + " TEXT);");
         db.close();
+        SharedPreferences preferences = getSharedPreferences("TABLE", MODE_PRIVATE);
+        SharedPreferences.Editor saveTableName = preferences.edit();
+        saveTableName.putString("OPEN", tableName);
+        saveTableName.apply();
     }
 
     @Override
