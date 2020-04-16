@@ -91,10 +91,10 @@ public class PerInfEdit extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         boolean result = JSONHelper.exportToJSON(this, appUser);
         if(result){
-            Toast.makeText(this, "Edit save", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.per_inf_save_text_ok, Toast.LENGTH_LONG).show();
         }
         else {
-            Toast.makeText(this, "Edit, don\'t save", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, R.string.per_inf_save_button_not, Toast.LENGTH_LONG).show();
         }
         this.finish();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

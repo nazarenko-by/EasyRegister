@@ -29,6 +29,8 @@
     <string name="mail_inf">Mail</string>
     <string name="per_inf_button">Edit</string>
     <string name="per_inf_save_button">Save</string>
+    <string name="per_inf_save_text_ok">Edit save</string>
+    <string name="per_inf_save_button_not">Edit, don\'t save</string>
 
     <!-- Camera -->
     <string name="camera_view_text">Scanning..</string>

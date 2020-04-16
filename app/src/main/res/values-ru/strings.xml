@@ -29,6 +29,8 @@
     <string name="mail_inf">Почта</string>
     <string name="per_inf_button">Изменить</string>
     <string name="per_inf_save_button">Сохранить</string>
+    <string name="per_inf_save_text_ok">Изменения сохранены</string>
+    <string name="per_inf_save_button_not">Изменения не сохранены</string>
 
     <!-- Camera -->
     <string name="camera_view_text">Сканирование..</string>
