@@ -33,10 +33,6 @@ public class CameraScanActivity extends Activity {
     private boolean barcodeScanned = false;
     private boolean previewing = true;
 
-    //static {
-      //  System.loadLibrary("iconv");
-   // }
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_camera_scan);

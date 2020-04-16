@@ -2,7 +2,10 @@ package com.nazarenko_by.easyregister;
 
 import android.Manifest;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -78,38 +81,70 @@ public class MainActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_create:
-                AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
-                alertDialog.setTitle(getResources().getString(R.string.action_create));
-                final EditText input = new EditText(MainActivity.this);
-                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
-                        LinearLayout.LayoutParams.MATCH_PARENT,
-                        LinearLayout.LayoutParams.MATCH_PARENT);
-                input.setLayoutParams(lp);
-                alertDialog.setView(input);
-                alertDialog.setPositiveButton(getResources().getString(R.string.create_table_button),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText(getApplicationContext(),input.getText().toString(),Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                alertDialog.setNegativeButton(getResources().getString(R.string.cancel),
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        });
-                alertDialog.show();
+                createTableDialog();
                 return true;
             case R.id.action_open:
+                SQLiteDatabase db ;
+                DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+                db = databaseHelper.getWritableDatabase();
+                Cursor c = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
 
+                if (c.moveToFirst()) {
+                    while ( !c.isAfterLast() ) {
+                        Toast.makeText(this, "Table Name=> "+c.getString(0), Toast.LENGTH_LONG).show();
+                        c.moveToNext();
+                    }
+                }
+                db.close();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    private void createTableDialog(){
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+        alertDialog.setTitle(getResources().getString(R.string.action_create));
+        final EditText input = new EditText(MainActivity.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        input.setLayoutParams(lp);
+        alertDialog.setView(input);
+        alertDialog.setPositiveButton(getResources().getString(R.string.create_table_button),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(getApplicationContext(),input.getText().toString(),Toast.LENGTH_SHORT).show();
+                        createNewDB(input.getText().toString());
+                    }
+                });
+        alertDialog.setNegativeButton(getResources().getString(R.string.cancel),
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        alertDialog.show();
+    }
+
+    private void createNewDB(String tableName){
+        SQLiteDatabase db ;
+        DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+        db = databaseHelper.getWritableDatabase();
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + tableName + " ("
+                + DatabaseHelper.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + DatabaseHelper.COLUMN_SN + " TEXT, "
+                + DatabaseHelper.COLUMN_FN + " TEXT, "
+                + DatabaseHelper.COLUMN_PT + " TEXT, "
+                + DatabaseHelper.COLUMN_GP + " TEXT, "
+                + DatabaseHelper.COLUMN_TY + " TEXT, "
+                + DatabaseHelper.COLUMN_DB + " DATE, "
+                + DatabaseHelper.COLUMN_TN + " TEXT, "
+                + DatabaseHelper.COLUMN_ML + " TEXT);");
+        db.close();
+    }
 
     @Override
     public boolean onSupportNavigateUp() {

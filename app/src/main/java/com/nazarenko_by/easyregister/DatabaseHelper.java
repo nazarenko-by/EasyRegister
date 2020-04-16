@@ -4,11 +4,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import static android.content.Context.MODE_PRIVATE;
-
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "userStore.db";
-    private static final int VERSION = 2;
+    public static final String DATABASE_NAME = "userStore.db";
+    public static final int VERSION = 2;
     public static final String TABLE = "Users";  // название таблицы в бд
     public static final String COLUMN_ID = "User_ID";
     public static final String COLUMN_FN = "First_name";
