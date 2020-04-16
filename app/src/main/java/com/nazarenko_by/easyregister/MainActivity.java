@@ -15,9 +15,13 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,6 +37,8 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity{
 
@@ -85,18 +91,7 @@ public class MainActivity extends AppCompatActivity{
                 createTableDialog();
                 return true;
             case R.id.action_open:
-                SQLiteDatabase db ;
-                DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
-                db = databaseHelper.getWritableDatabase();
-                Cursor c = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
-
-                if (c.moveToFirst()) {
-                    while ( !c.isAfterLast() ) {
-                        Toast.makeText(this, "Table Name=> "+c.getString(0), Toast.LENGTH_LONG).show();
-                        c.moveToNext();
-                    }
-                }
-                db.close();
+                openTableDialog();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -149,6 +144,46 @@ public class MainActivity extends AppCompatActivity{
         SharedPreferences.Editor saveTableName = preferences.edit();
         saveTableName.putString("OPEN", tableName);
         saveTableName.apply();
+    }
+
+    private void openTableDialog(){
+        SQLiteDatabase db ;
+        DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+        db = databaseHelper.getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+        ArrayList<String> tables = new ArrayList<String>();
+        if (c.moveToFirst()) {
+            while ( !c.isAfterLast() ) {
+                if(!c.getString(0).equals("android_metadata") &&
+                        !c.getString(0).equals("sqlite_sequence")) {
+                    tables.add(c.getString(0));
+                    Toast.makeText(this, "Table Name=> " + c.getString(0), Toast.LENGTH_LONG).show(); }
+                c.moveToNext();
+            }
+        }
+        db.close();
+        AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+        alertDialog.setTitle(getResources().getString(R.string.action_open));
+        final ListView listView = new ListView(MainActivity.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        listView.setLayoutParams(lp);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, tables );
+        listView.setAdapter(arrayAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                SharedPreferences preferences = getSharedPreferences("TABLE", MODE_PRIVATE);
+                SharedPreferences.Editor saveTableName = preferences.edit();
+                saveTableName.putString("OPEN", listView.getItemAtPosition(position).toString());
+                saveTableName.apply();
+            }
+        });
+        alertDialog.setView(listView);
+        alertDialog.show();
     }
 
     @Override
