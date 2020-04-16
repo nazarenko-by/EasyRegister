@@ -1,6 +1,7 @@
 package com.nazarenko_by.easyregister;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -129,7 +130,7 @@ public class MainActivity extends AppCompatActivity{
         SQLiteDatabase db ;
         DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
         db = databaseHelper.getWritableDatabase();
-        db.execSQL("CREATE TABLE IF NOT EXISTS " + tableName + " ("
+        db.execSQL("CREATE TABLE IF NOT EXISTS \'" + tableName + "\' ("
                 + DatabaseHelper.COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + DatabaseHelper.COLUMN_SN + " TEXT, "
                 + DatabaseHelper.COLUMN_FN + " TEXT, "
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity{
         db.close();
         SharedPreferences preferences = getSharedPreferences("TABLE", MODE_PRIVATE);
         SharedPreferences.Editor saveTableName = preferences.edit();
-        saveTableName.putString("OPEN", tableName);
+        saveTableName.putString("OPEN","\'" + tableName + "\'");
         saveTableName.apply();
     }
 
@@ -181,7 +182,7 @@ public class MainActivity extends AppCompatActivity{
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 SharedPreferences preferences = getSharedPreferences("TABLE", MODE_PRIVATE);
                 SharedPreferences.Editor saveTableName = preferences.edit();
-                saveTableName.putString("OPEN", listView.getItemAtPosition(position).toString());
+                saveTableName.putString("OPEN","\'" + listView.getItemAtPosition(position).toString() + "\'");
                 saveTableName.apply();
                 dialog.dismiss();
             }
@@ -217,12 +218,16 @@ public class MainActivity extends AppCompatActivity{
         listView.setAdapter(arrayAdapter);
         alertDialog.setView(listView);
         final AlertDialog dialog = alertDialog.create();
+        SharedPreferences preferences = getSharedPreferences("TABLE", MODE_PRIVATE);
+        final String tableName = preferences.getString("OPEN", DatabaseHelper.TABLE);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String s = "DROP TABLE \'" +  listView.getItemAtPosition(position).toString() + "\';";
-                db.execSQL(s);
+                if(!tableName.equals("\'" +  listView.getItemAtPosition(position).toString() + "\'")){
+                    String s = "DROP TABLE \'" +  listView.getItemAtPosition(position).toString() + "\';";
+                    db.execSQL(s);
+                }
                 db.close();
                 dialog.dismiss();
             }
