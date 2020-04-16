@@ -49,8 +49,8 @@ public class AsyncQRGenerator extends AsyncTask<String, Integer, Bitmap> {
     @Override
     protected void onPreExecute() {
         dialog = new ProgressDialog(activity);
-        dialog.setTitle("Generating...");
-        dialog.setMessage("Generating QR code, please wait...");
+        dialog.setTitle(R.string.QR_generating);
+        dialog.setMessage(this.activity.getResources().getString(R.string.QR_generating_msg));
         dialog.setCancelable(false);
         dialog.show();
         super.onPreExecute();
@@ -79,7 +79,7 @@ public class AsyncQRGenerator extends AsyncTask<String, Integer, Bitmap> {
         }
 
         /* Оповещаем пользователя об успешном завершении */
-        String message = "QR codes generated successfully!";
+        String message = this.activity.getResources().getString(R.string.QR_generating_successfully);
         Toast toast = Toast.makeText(activity, message, Toast.LENGTH_SHORT);
 
         toast.show();

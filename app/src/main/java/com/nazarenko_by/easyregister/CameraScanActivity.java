@@ -127,7 +127,7 @@ public class CameraScanActivity extends Activity {
                 for (Symbol sym : syms) {
                     AddUseToList addUseToList = new AddUseToList(getApplicationContext(), sym.getData());
                     addUseToList.addToBase();
-                    scanText.setText("barcode result " + sym.getData());
+                    scanText.setText(R.string.camera_scan_successfully);
                     barcodeScanned = true;
                 }
             }

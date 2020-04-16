@@ -2,8 +2,8 @@
     <string name="app_name">Easy Register</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Пользователь</string>
-    <string name="nav_header_subtitle">User@user.com</string>
+    <string name="nav_header_title">Имя Фамилия</string>
+    <string name="nav_header_subtitle">user@mail.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
     <!-- Action menu -->
@@ -35,6 +35,7 @@
     <string name="camera_button_text">Новое сканирование</string>
     <string name="camera_cancel_button_text">Вернутся</string>
     <string name="camera_error">При вызове камеры, она закроется</string>
+    <string name="camera_scan_successfully">Сканирование QR кода успешно завершено</string>
 
     <!-- Dialog window -->
     <string name="delete">Удалить</string>
@@ -46,6 +47,9 @@
     <string name="photo_message">Установить фотографию профиля</string>
     <string name="create_table_button">Создать</string>
 
-
+    <!-- QR dialog -->
+    <string name="QR_generating_msg">QR код генерируется, пожалуйста подождите..</string>
+    <string name="QR_generating">Генерируется</string>
+    <string name="QR_generating_successfully">QR удачно сгенерирован</string>
 
 </resources>

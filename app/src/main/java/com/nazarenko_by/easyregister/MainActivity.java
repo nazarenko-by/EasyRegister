@@ -85,9 +85,12 @@ public class MainActivity extends AppCompatActivity{
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         switch (item.getItemId()) {
             case R.id.action_create:
                 createTableDialog();
+                navController.navigate(R.id.nav_log);
+                onBackPressed();
                 return true;
             case R.id.action_open:
                 openTableDialog();
@@ -127,6 +130,7 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void createNewDB(String tableName){
+        final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         SQLiteDatabase db ;
         DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
         db = databaseHelper.getWritableDatabase();
@@ -145,6 +149,7 @@ public class MainActivity extends AppCompatActivity{
         SharedPreferences.Editor saveTableName = preferences.edit();
         saveTableName.putString("OPEN","\'" + tableName + "\'");
         saveTableName.apply();
+        navController.navigate(R.id.nav_log);
     }
 
     private void openTableDialog(){
@@ -175,6 +180,7 @@ public class MainActivity extends AppCompatActivity{
                 android.R.layout.simple_list_item_1, tables );
         listView.setAdapter(arrayAdapter);
         alertDialog.setView(listView);
+        final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         final AlertDialog dialog = alertDialog.create();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
@@ -185,6 +191,8 @@ public class MainActivity extends AppCompatActivity{
                 saveTableName.putString("OPEN","\'" + listView.getItemAtPosition(position).toString() + "\'");
                 saveTableName.apply();
                 dialog.dismiss();
+                navController.navigate(R.id.nav_log);
+
             }
         });
         dialog.show();
