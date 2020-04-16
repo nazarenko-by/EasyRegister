@@ -2,7 +2,6 @@ package com.nazarenko_by.easyregister;
 
 import android.Manifest;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -15,7 +14,6 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
@@ -93,6 +91,9 @@ public class MainActivity extends AppCompatActivity{
             case R.id.action_open:
                 openTableDialog();
                 return true;
+            case R.id.action_delete:
+                deleteTableDialog();
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -111,7 +112,6 @@ public class MainActivity extends AppCompatActivity{
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(getApplicationContext(),input.getText().toString(),Toast.LENGTH_SHORT).show();
                         createNewDB(input.getText().toString());
                     }
                 });
@@ -157,10 +157,11 @@ public class MainActivity extends AppCompatActivity{
                 if(!c.getString(0).equals("android_metadata") &&
                         !c.getString(0).equals("sqlite_sequence")) {
                     tables.add(c.getString(0));
-                    Toast.makeText(this, "Table Name=> " + c.getString(0), Toast.LENGTH_LONG).show(); }
+                }
                 c.moveToNext();
             }
         }
+        c.close();
         db.close();
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
         alertDialog.setTitle(getResources().getString(R.string.action_open));
@@ -172,6 +173,8 @@ public class MainActivity extends AppCompatActivity{
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, tables );
         listView.setAdapter(arrayAdapter);
+        alertDialog.setView(listView);
+        final AlertDialog dialog = alertDialog.create();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
@@ -180,10 +183,51 @@ public class MainActivity extends AppCompatActivity{
                 SharedPreferences.Editor saveTableName = preferences.edit();
                 saveTableName.putString("OPEN", listView.getItemAtPosition(position).toString());
                 saveTableName.apply();
+                dialog.dismiss();
             }
         });
+        dialog.show();
+    }
+
+    private void deleteTableDialog(){
+        final SQLiteDatabase db ;
+        DatabaseHelper databaseHelper = new DatabaseHelper(getApplicationContext());
+        db = databaseHelper.getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT name FROM sqlite_master WHERE type='table'", null);
+        ArrayList<String> tables = new ArrayList<String>();
+        if (c.moveToFirst()) {
+            while ( !c.isAfterLast() ) {
+                if(!c.getString(0).equals("android_metadata") &&
+                        !c.getString(0).equals("sqlite_sequence")) {
+                    tables.add(c.getString(0));
+                }
+                c.moveToNext();
+            }
+        }
+        c.close();
+        final AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+        alertDialog.setTitle(getResources().getString(R.string.action_open));
+        final ListView listView = new ListView(MainActivity.this);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.MATCH_PARENT);
+        listView.setLayoutParams(lp);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, tables );
+        listView.setAdapter(arrayAdapter);
         alertDialog.setView(listView);
-        alertDialog.show();
+        final AlertDialog dialog = alertDialog.create();
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String s = "DROP TABLE \'" +  listView.getItemAtPosition(position).toString() + "\';";
+                db.execSQL(s);
+                db.close();
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     @Override

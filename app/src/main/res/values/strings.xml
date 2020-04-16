@@ -8,7 +8,8 @@
 
     <!-- Action menu -->
     <string name="action_open">Open table</string>
-    <string name="action_create">Create new table</string>
+    <string name="action_create">Create table</string>
+    <string name="action_delete">Delete table</string>
 
     <!-- Navigation menu -->
     <string name="menu_per_inf">Personal Information</string>

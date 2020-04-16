@@ -5,8 +5,11 @@
     <string name="nav_header_title">Пользователь</string>
     <string name="nav_header_subtitle">User@user.com</string>
     <string name="nav_header_desc">Navigation header</string>
+
+    <!-- Action menu -->
     <string name="action_open">Открыть таблицу</string>
-    <string name="action_create">Создать новую таблицу</string>
+    <string name="action_create">Создать таблицу</string>
+    <string name="action_delete">Удалить таблицу</string>
 
     <!-- Navigation menu -->
     <string name="menu_per_inf">Личная информация</string>
