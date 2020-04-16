@@ -69,7 +69,9 @@ public class PerInfEdit extends AppCompatActivity {
     }
 
     private void updateUserInfo(){
-        if (userId.equals(""))
+        if (userId == null)
+            userId = userIdText.getText().toString();
+        else if (userId.equals(""))
             userId = userIdText.getText().toString();
         String firstName = firstNameText.getText().toString();
         String secondName = secondNameText.getText().toString();
