@@ -47,6 +47,7 @@ public class PerInfEdit extends AppCompatActivity {
 
         if(appUser != null) {
             imgString = appUser.getImage();
+            userId = appUser.getUserId();
             if (appUser.getImage() != null) {
                 byte[] decodedString = Base64.decode(appUser.getImage(), Base64.DEFAULT);
                 Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
@@ -54,7 +55,6 @@ public class PerInfEdit extends AppCompatActivity {
             }
             if(appUser.getUserId() != null && !appUser.getUserId().equals("")){
                 userIdText.setVisibility(View.INVISIBLE);
-                userId = appUser.getUserId();
             }
             firstNameText.setText(appUser.getFirstName());
             secondNameText.setText(appUser.getSecondName());
@@ -69,11 +69,8 @@ public class PerInfEdit extends AppCompatActivity {
     }
 
     private void updateUserInfo(){
-        if(appUser.getUserId() != null && !appUser.getUserId().equals("")){
-
-        } else {
+        if (userId.equals(""))
             userId = userIdText.getText().toString();
-        }
         String firstName = firstNameText.getText().toString();
         String secondName = secondNameText.getText().toString();
         String patronymic = patronymicText.getText().toString();

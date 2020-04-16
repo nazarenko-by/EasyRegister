@@ -2,7 +2,7 @@ package com.nazarenko_by.easyregister;
 
 public class AppUser {
 
-    private String UserId = "";
+    private String UserId;
     private String FirstName;
     private String SecondName;
     private String Patronymic;
