@@ -2,10 +2,13 @@
     <string name="app_name">Easy Register</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_title">User</string>
+    <string name="nav_header_subtitle">User@user.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+
+    <!-- Action menu -->
+    <string name="action_open">Open table</string>
+    <string name="action_create">Create new table</string>
 
     <!-- Navigation menu -->
     <string name="menu_per_inf">Personal Information</string>
@@ -40,6 +43,7 @@
     <string name="from_gallery">From Gallery</string>
     <string name="delete_message">Do you want to delete selected?</string>
     <string name="photo_message">Choose your profile picture</string>
+    <string name="create_table_button">Create</string>
 
 
 
