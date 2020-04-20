@@ -24,7 +24,7 @@
     <string name="patronymic_inf">Отчество</string>
     <string name="birthday_inf">Дата рождения</string>
     <string name="group_inf">Группа</string>
-    <string name="type_inf">Тип</string>
+    <string name="type_inf">Статус</string>
     <string name="telephone_inf">Номер телефона</string>
     <string name="mail_inf">Почта</string>
     <string name="per_inf_button">Изменить</string>
@@ -56,7 +56,7 @@
 
     <!-- Log dialog -->
     <string name="birthdayDate">Дата рождения: </string>
-    <string name="type">\nТип: </string>
+    <string name="type">\nСтатус: </string>
     <string name="group">\nГруппа: </string>
     <string name="telNumber">\nНомер телефона: </string>
     <string name="mail">\nПочта: </string>

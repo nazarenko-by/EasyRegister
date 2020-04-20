@@ -136,6 +136,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/per_inf_save_button"
+            android:textSize="17sp"
             android:onClick="saveEdit"
             android:textColor="@color/buttonTextColor"
             android:background="@drawable/button_form"

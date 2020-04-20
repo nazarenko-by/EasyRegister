@@ -24,7 +24,7 @@
     <string name="patronymic_inf">Patronymic</string>
     <string name="birthday_inf">Birthday Data</string>
     <string name="group_inf">Group</string>
-    <string name="type_inf">Type user</string>
+    <string name="type_inf">Status</string>
     <string name="telephone_inf">Tel. Number</string>
     <string name="mail_inf">Mail</string>
     <string name="per_inf_button">Edit</string>
@@ -56,7 +56,7 @@
 
     <!-- Log dialog -->
     <string name="birthdayDate">Birthday: </string>
-    <string name="type">\nType: </string>
+    <string name="type">\nStatus: </string>
     <string name="group">\nGroup: </string>
     <string name="telNumber">\nTelephone number: </string>
     <string name="mail">\nMail: </string>

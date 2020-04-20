@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#2F3EB6</color>
-    <color name="colorPrimaryDark">#0F2094</color>
+    <color name="colorPrimary">#1b65fd</color>
+    <color name="colorPrimaryDark">#1C66FB</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="centerHeaderColor">#3845A5</color>
-    <color name="endHeaderColor">#212B8A</color>
-    <color name="startHeaderColor">#616BBD</color>
+    <color name="endHeaderColor">#1b65fd</color>
+    <color name="startHeaderColor">#5ba0ff</color>
     <color name="buttonTextColor">#fafafa</color>
 </resources>

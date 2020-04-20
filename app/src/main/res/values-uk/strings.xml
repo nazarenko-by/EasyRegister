@@ -24,7 +24,7 @@
     <string name="patronymic_inf">По батькові</string>
     <string name="birthday_inf">Дата народження</string>
     <string name="group_inf">Група</string>
-    <string name="type_inf">Тип</string>
+    <string name="type_inf">Статус</string>
     <string name="telephone_inf">Номер телефону</string>
     <string name="mail_inf">Пошта</string>
     <string name="per_inf_button">Редагувати</string>
@@ -56,7 +56,7 @@
 
     <!-- Log dialog -->
     <string name="birthdayDate">Дата народження: </string>
-    <string name="type">\nТип: </string>
+    <string name="type">\nСтатус: </string>
     <string name="group">\nГрупа: </string>
     <string name="telNumber">\nНомер телефону: </string>
     <string name="mail">\nПошта: </string>
