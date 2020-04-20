@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Easy Register</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Ім\'я Фамілія</string>
+    <string name="nav_header_subtitle">user@mail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+
+    <!-- Action menu -->
+    <string name="action_open">Відкрити таблицю</string>
+    <string name="action_create">Створити таблицю</string>
+    <string name="action_delete">Видалити таблицю</string>
+
+    <!-- Navigation menu -->
+    <string name="menu_per_inf">Персональна інформація</string>
+    <string name="menu_qr">QR код</string>
+    <string name="menu_log">Журнал</string>
+    <string name="menu_add_user">Додати до журналу</string>
+
+    <!-- Personal information -->
+    <string name="user_id">ID</string>
+    <string name="first_name_inf">Ім\'я</string>
+    <string name="second_name_inf">Фамілія</string>
+    <string name="patronymic_inf">По батькові</string>
+    <string name="birthday_inf">Дата народження</string>
+    <string name="group_inf">Група</string>
+    <string name="type_inf">Тип</string>
+    <string name="telephone_inf">Номер телефону</string>
+    <string name="mail_inf">Пошта</string>
+    <string name="per_inf_button">Редагувати</string>
+    <string name="per_inf_save_button">Зберегти</string>
+    <string name="per_inf_save_text_ok">Редагування збережено</string>
+    <string name="per_inf_save_button_not">Редагування не збережено</string>
+
+    <!-- Camera -->
+    <string name="camera_view_text">Сканування..</string>
+    <string name="camera_button_text">Нове сканування</string>
+    <string name="camera_cancel_button_text">Повернутись</string>
+    <string name="camera_error">Під час виклику камери, вона зачинеться</string>
+    <string name="camera_scan_successfully">Сканування QR коду успішно завершено</string>
+
+    <!-- Dialog window -->
+    <string name="delete">Видалити</string>
+    <string name="delete_all">Видалити все</string>
+    <string name="cancel">Відміна</string>
+    <string name="take_photo">Зробити фотографію</string>
+    <string name="from_gallery">Обрати з галереї</string>
+    <string name="delete_message">Ви хочете вибрати обране?</string>
+    <string name="photo_message">Встановити фотографію профілю</string>
+    <string name="create_table_button">Створити</string>
+
+    <!-- QR dialog -->
+    <string name="QR_generating_msg">QR код генерирується, будьласка зачекайте..</string>
+    <string name="QR_generating">Генерується</string>
+    <string name="QR_generating_successfully">QR успішно згенеровано</string>
+
+    <!-- Log dialog -->
+    <string name="birthdayDate">Дата народження: </string>
+    <string name="type">\nТип: </string>
+    <string name="group">\nГрупа: </string>
+    <string name="telNumber">\nНомер телефону: </string>
+    <string name="mail">\nПошта: </string>
+    <string name="id">\nID: </string>
+
+</resources>

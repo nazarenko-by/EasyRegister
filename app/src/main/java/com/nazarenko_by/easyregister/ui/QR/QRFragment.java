@@ -50,7 +50,6 @@ public class QRFragment extends Fragment {
         }
         Bitmap bitmap;
         AsyncQRGenerator asyncQRGenerator = new AsyncQRGenerator(getActivity());
-       // new AsyncQRGenerator(getActivity()).execute(QRUserInfoString);
         asyncQRGenerator.execute(QRUserInfoString);
         bitmap = asyncQRGenerator.doInBackground(QRUserInfoString);
         imageView.setImageBitmap(bitmap);

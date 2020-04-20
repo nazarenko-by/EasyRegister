@@ -54,4 +54,12 @@
     <string name="QR_generating">Generating</string>
     <string name="QR_generating_successfully">QR codes generated successfully!</string>
 
+    <!-- Log dialog -->
+    <string name="birthdayDate">Birthday: </string>
+    <string name="type">\nType: </string>
+    <string name="group">\nGroup: </string>
+    <string name="telNumber">\nTelephone number: </string>
+    <string name="mail">\nMail: </string>
+    <string name="id">\nID: </string>
+
 </resources>

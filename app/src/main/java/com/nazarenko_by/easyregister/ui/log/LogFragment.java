@@ -39,7 +39,7 @@ public class LogFragment extends Fragment {
         databaseHelper = new DatabaseHelper(inflater.getContext().getApplicationContext());
         final View root = inflater.inflate(R.layout.fragment_log, container, false);
         setInitialData();
-        ListView list = root.findViewById(R.id.list);
+        final ListView list = root.findViewById(R.id.list);
         appUserAdapter = new AppUserAdapter(inflater.getContext(), R.layout.list_item, appUsers);
         list.setAdapter(appUserAdapter);
         list.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -65,6 +65,29 @@ public class LogFragment extends Fragment {
                 });
                 builder.show();
                 return false;
+            }
+        });
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                AlertDialog.Builder userInfo = new AlertDialog.Builder(getActivity());
+                userInfo.setTitle(appUserAdapter.getItem(position).getSecondName() + " "
+                        + appUserAdapter.getItem(position).getFirstName() + "\n"
+                        + appUserAdapter.getItem(position).getPatronymic());
+                String user = getResources().getString(R.string.birthdayDate) +  appUserAdapter.getItem(position).getDate() +
+                        getResources().getString(R.string.type) + appUserAdapter.getItem(position).getType() +
+                        getResources().getString(R.string.group) + appUserAdapter.getItem(position).getGroup() +
+                        getResources().getString(R.string.telNumber) + appUserAdapter.getItem(position).getTelNumber() +
+                        getResources().getString(R.string.mail) + appUserAdapter.getItem(position).getMail() +
+                        getResources().getString(R.string.id) + appUserAdapter.getItem(position).getUserId();
+                userInfo.setMessage(user);
+                userInfo.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                userInfo.show();
             }
         });
         return root;

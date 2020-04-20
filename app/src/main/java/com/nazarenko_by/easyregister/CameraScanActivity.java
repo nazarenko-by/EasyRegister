@@ -98,6 +98,7 @@ public class CameraScanActivity extends Activity {
             mCamera.setPreviewCallback(null);
             mCamera.release();
             mCamera = null;
+            onBackPressed();
         }
     }
 
